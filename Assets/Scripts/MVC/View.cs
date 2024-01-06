@@ -7,9 +7,11 @@ public class View : MonoBehaviour
     [SerializeField] private Model _model;
 
     [SerializeField] private TextMeshProUGUI dialogueTextToRefresh;
-    [SerializeField] private TextMeshPro recipeTextToRefresh;
-    [SerializeField] private TextMeshPro firstBadRecipeTextToRefresh;
-    [SerializeField] private TextMeshPro secondBadRecipeTextToRefresh;
+   // [SerializeField] private TextMeshPro recipeTextToRefresh;
+   // [SerializeField] private TextMeshPro firstBadRecipeTextToRefresh;
+   // [SerializeField] private TextMeshPro secondBadRecipeTextToRefresh;
+    
+    [SerializeField] private TextMeshPro[] listOfRecipeTextToRefresh;
     
     [SerializeField] private SpriteRenderer customerToRefresh;
 
@@ -27,11 +29,10 @@ public class View : MonoBehaviour
 
     public void RefreshRecipe()
     {
-        recipeTextToRefresh.text = "" + _model.choosenRecipe.recipeInstructions;
-        
-        firstBadRecipeTextToRefresh.text = "" + _model.listOfBadRecipe[0].recipeInstructions;
-        
-        secondBadRecipeTextToRefresh.text = "" + _model.listOfBadRecipe[1].recipeInstructions;
+        for (int i = 0; i < listOfRecipeTextToRefresh.Length; i++)
+        {
+            listOfRecipeTextToRefresh[i].text = "" + _model.listOfChoosenRecipe[i].recipeInstructions;
+        }
     }
 
     public void RefreshCustomer()

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Model : MonoBehaviour
 {
@@ -7,19 +8,16 @@ public class Model : MonoBehaviour
     
     [SerializeField] private Controller _controller;
     [SerializeField] private View _view;
-    [SerializeField] private InputReader _inputReader;
     
     [SerializeField] private Sprite[] listOfCustomer;
     
     [SerializeField] private DialogueData[] listOfDialogue;
     
     [SerializeField] private RecipeData[] listOfRecipe;
-
-    [SerializeField] private Camera mainCamera;
     
-    [Header("Ne pas set up")]
+     [Header("Ne pas set up")]
     
-    public List<RecipeData> listOfBadRecipe = new List<RecipeData>();
+    public List<RecipeData> listOfChoosenRecipe = new List<RecipeData>();
 
     public DialogueData choosenDialogue;
     
@@ -48,7 +46,9 @@ public class Model : MonoBehaviour
     {
         choosenRecipe = choosenDialogue.goodRecipe;
         
-        listOfBadRecipe.Clear();
+        listOfChoosenRecipe.Clear();
+        
+        listOfChoosenRecipe.Add(choosenRecipe);
         
         for (int i = 0; i < 2; i++)
         {
@@ -58,12 +58,26 @@ public class Model : MonoBehaviour
             {
                 RecipeData randomRecipe = listOfRecipe[Random.Range(0, listOfRecipe.Length)];
                 
-                if (randomRecipe != choosenRecipe && listOfBadRecipe.Contains(randomRecipe) == false)
+                if (randomRecipe != choosenRecipe && listOfChoosenRecipe.Contains(randomRecipe) == false)
                 {
                     recipe = randomRecipe;
                 }
             }
-            listOfBadRecipe.Add(recipe);
+            listOfChoosenRecipe.Add(recipe);
+            Shuffle(listOfChoosenRecipe);
+        }
+    }
+    
+    public static void Shuffle<T>(IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1) 
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
         }
     }
 }

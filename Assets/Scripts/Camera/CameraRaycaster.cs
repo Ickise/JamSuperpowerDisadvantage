@@ -10,8 +10,6 @@ public class CameraRaycaster : MonoBehaviour
     
     private void Start()
     {
-        cam = Camera.main;
-        
         InputReader._instance.onZoomEvent.AddListener(OnClickPerformed);
     }
     

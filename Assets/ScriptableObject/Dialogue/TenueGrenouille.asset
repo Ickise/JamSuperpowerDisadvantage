@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a545f63d55856447ad98d16857d4c59, type: 3}
+  m_Name: TenueGrenouille
+  m_EditorClassIdentifier: 
+  dialogueLines: "Bien le bonjour ! \nJe suis bien chez le c\xE9l\xE9bre styliste
+    Atchoum ? Parfait ! J'aimerai une tenue me faisant bondir, lancer ma langue tr\xE8s
+    loin, nager dans l'eau... une tenue Grenouille serait parfait. "
+  goodRecipe: {fileID: 11400000, guid: eceaffc1bd3ed34439114a993e013af9, type: 2}
