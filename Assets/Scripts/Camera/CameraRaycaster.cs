@@ -6,7 +6,7 @@ public class CameraRaycaster : MonoBehaviour
 
     public RaycastHit2D hit2D;
 
-    public GameObject objectHit;
+    public Recipe hitRecipeObject;
     
     private void Start()
     {
@@ -21,11 +21,11 @@ public class CameraRaycaster : MonoBehaviour
 
         if (hit2D.collider != null)
         {
-            objectHit = hit2D.collider.gameObject;
+            hitRecipeObject = hit2D.collider.gameObject.GetComponent<Recipe>();
         }
         else
         {
-            objectHit = null;
+            hitRecipeObject = null;
         }
     }
 }

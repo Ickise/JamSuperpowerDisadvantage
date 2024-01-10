@@ -1,20 +1,24 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class View : MonoBehaviour
 {
+    [Header("À set up")]
+
     [SerializeField] private Controller _controller;
     [SerializeField] private Model _model;
 
     [SerializeField] private TextMeshProUGUI dialogueTextToRefresh;
-   // [SerializeField] private TextMeshPro recipeTextToRefresh;
-   // [SerializeField] private TextMeshPro firstBadRecipeTextToRefresh;
-   // [SerializeField] private TextMeshPro secondBadRecipeTextToRefresh;
     
     [SerializeField] private TextMeshPro[] listOfRecipeTextToRefresh;
     
     [SerializeField] private SpriteRenderer customerToRefresh;
+    [SerializeField] private SpriteRenderer dialogueBoxToRefresh;
 
+    [SerializeField] private GameObject[] elementsToDisable;
+    [SerializeField] private GameObject[] recipeToEnable;
+    
     private void Start()
     {
         RefreshDialogue();
@@ -32,11 +36,24 @@ public class View : MonoBehaviour
         for (int i = 0; i < listOfRecipeTextToRefresh.Length; i++)
         {
             listOfRecipeTextToRefresh[i].text = "" + _model.listOfChoosenRecipe[i].recipeInstructions;
+            recipeToEnable[i].SetActive(false);
         }
     }
 
     public void RefreshCustomer()
     {
-        customerToRefresh.sprite = _model.choosenCustomer;
+        customerToRefresh.sprite = _model.choosenCustomer.customerRepresentation;
+        dialogueBoxToRefresh.sprite = _model.choosenCustomer.dialogueBox;
+    }
+
+    public void EnableRecipeText()
+    {
+        for (int i = 0; i < listOfRecipeTextToRefresh.Length; i++)
+        {
+            recipeToEnable[i].SetActive(true);
+            
+            dialogueTextToRefresh.enabled = false;
+            elementsToDisable[i].SetActive(false);
+        }
     }
 }

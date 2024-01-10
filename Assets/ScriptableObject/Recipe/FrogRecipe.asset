@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b48d4c94f7d8b434bae962c6c409935e, type: 2}
   - {fileID: 11400000, guid: d8d77d40a488a344e8e1f62490bd6b7b, type: 2}
   - {fileID: 11400000, guid: a08e1724b531ab2459c842dfd17a7c1e, type: 2}
+  recipeRepresentation: {fileID: 21300000, guid: cf432f4fabef00948860dedfdc9f839d, type: 3}

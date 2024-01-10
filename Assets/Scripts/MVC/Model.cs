@@ -4,25 +4,25 @@ using Random = UnityEngine.Random;
 
 public class Model : MonoBehaviour
 {
-    [Header("A set up")]
+    [Header("À set up")]
     
     [SerializeField] private Controller _controller;
     [SerializeField] private View _view;
     
-    [SerializeField] private Sprite[] listOfCustomer;
+    [SerializeField] private CustomerData[] listOfCustomer;
     
     [SerializeField] private DialogueData[] listOfDialogue;
     
     [SerializeField] private RecipeData[] listOfRecipe;
     
-     [Header("Ne pas set up")]
+    [Header("Ne pas set up")]
     
     public List<RecipeData> listOfChoosenRecipe = new List<RecipeData>();
 
     public DialogueData choosenDialogue;
     
-    public Sprite choosenCustomer;
-    
+    public CustomerData choosenCustomer;
+
     public RecipeData choosenRecipe;
     
     private void Awake()

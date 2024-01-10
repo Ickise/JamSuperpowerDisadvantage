@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LabScene : MonoBehaviour
 {
-    [SerializeField] private CameraRaycaster _cameraRaycaster;
+    [SerializeField] private RecipeController _cameraRaycaster;
 
     [SerializeField] private GameObject[] listOfGameObject;
     
@@ -38,7 +38,7 @@ public class LabScene : MonoBehaviour
             {
                 canMove = false;
                 
-                objectToDontDisable.AddComponent<MoveObject>();
+                objectToDontDisable.AddComponent<Recipe>();
             }
         }
     }
@@ -54,17 +54,17 @@ public class LabScene : MonoBehaviour
 
     public void NextScene()
     {
-        if (_cameraRaycaster.objectHit != null)
+        if (_cameraRaycaster.hitRecipeObject != null)
         { 
-            objectToDontDisable = _cameraRaycaster.objectHit;
+            objectToDontDisable = _cameraRaycaster.hitRecipeObject.gameObject;
             
             foreach (var gameObject in listOfGameObject)
             {
                 gameObject.SetActive(false);
                 objectToDontDisable.SetActive(true);
-                Destroy(objectToDontDisable.GetComponent<MoveObject>());
+                Destroy(objectToDontDisable.GetComponent<Recipe>());
                 
-                _cameraRaycaster.objectHit = null;
+                _cameraRaycaster.hitRecipeObject = null;
                 canMove = true;
             }
         }
