@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9bf25bf8dfb25940960872efd019c71, type: 3}
-  m_Name: Ingredient 2
+  m_Name: SiropFruit
   m_EditorClassIdentifier: 
-  nameOfIngredient: Ingredient 2
-  ingredientRepresentation: {fileID: 21300000, guid: 890e9886cdf5be546b83ef66b6e75044, type: 3}
+  nameOfIngredient: SiropFruit
+  ingredientRepresentation: {fileID: 21300000, guid: 7d62db0aa5b112c48869345af15632dc, type: 3}

@@ -12,7 +12,7 @@ public class RecipeModel : MonoBehaviour
     [SerializeField] private RecipeController _recipeController;
 
     [SerializeField] private Recipe hitObject;
-
+    
     private RaycastHit2D hit2D;
     
     private float timeToLerp;

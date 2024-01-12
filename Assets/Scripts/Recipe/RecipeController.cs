@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RecipeController : MonoBehaviour
 {
+    [SerializeField] private GameObject positionOfRecipe;
+
     public Camera cam;
 
     public Recipe hitRecipeObject;
@@ -11,6 +13,7 @@ public class RecipeController : MonoBehaviour
     private RaycastHit2D hit2D;
 
     private Vector3 originalScale = new Vector3(1, 1, 1);
+
     
     private void Start()
     {
@@ -64,8 +67,17 @@ public class RecipeController : MonoBehaviour
 
     private void ReturnToOriginalPosition()
     {
-        oldHitRecipeObject.transform.position = oldHitRecipeObject.originalPosition;
-        oldHitRecipeObject.transform.localScale = originalScale;
-        hitRecipeObject = null;
+        if (positionOfRecipe.activeSelf)
+        {
+            oldHitRecipeObject.transform.position = oldHitRecipeObject.originalPosition;
+            oldHitRecipeObject.transform.localScale = positionOfRecipe.transform.localScale;
+            hitRecipeObject = null;
+        }
+        else
+        {
+            oldHitRecipeObject.transform.position = oldHitRecipeObject.originalPosition;
+            oldHitRecipeObject.transform.localScale = originalScale;
+            hitRecipeObject = null;
+        }
     }
 }

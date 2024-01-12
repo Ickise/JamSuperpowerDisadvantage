@@ -10,6 +10,8 @@ public class LabScene : MonoBehaviour
     
     [SerializeField] private GameObject[] listToKeep;
 
+    [SerializeField] private GameObject[] listToEnable;
+
     [SerializeField] private GameObject positionOfRecipe;
 
     [SerializeField] private SpriteRenderer backgroundSpriteRenderer;
@@ -32,6 +34,8 @@ public class LabScene : MonoBehaviour
         if (_transitionToLab.canChangeScene)
         {
             DoMove();
+
+            ActiveLabScene();
         }
     }
 
@@ -39,9 +43,13 @@ public class LabScene : MonoBehaviour
     {
         InputReader._instance.onContinueEvent.RemoveListener(NextScene);
 
+        positionOfRecipe.SetActive(true);
+        
         objectToDontDisable.transform.position = positionOfRecipe.transform.position;
 
         objectToDontDisable.transform.localScale = positionOfRecipe.transform.localScale;
+
+        objectToDontDisable.transform.rotation = positionOfRecipe.transform.rotation;
 
         backgroundSpriteRenderer.sprite = labBackgroundSprite;
         
@@ -71,9 +79,15 @@ public class LabScene : MonoBehaviour
                 gameObject.SetActive(false);
                 objectToDontDisable.SetActive(true);
                 Destroy(objectToDontDisable.GetComponent<Recipe>());
-
-                _recipeController.hitRecipeObject = null;
             }
+        }
+    }
+
+    private void ActiveLabScene()
+    {
+        foreach (var gameObject in listToEnable)
+        {
+            gameObject.SetActive(true);
         }
     }
 }

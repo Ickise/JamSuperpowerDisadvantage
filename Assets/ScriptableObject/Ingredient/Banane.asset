@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9bf25bf8dfb25940960872efd019c71, type: 3}
-  m_Name: Ingredient 3
+  m_Name: Banane
   m_EditorClassIdentifier: 
-  nameOfIngredient: Ingredient 3
-  ingredientRepresentation: {fileID: 21300000, guid: 738f44be7d74a534c8157ce955d144b3, type: 3}
+  nameOfIngredient: Banane
+  ingredientRepresentation: {fileID: 21300000, guid: 3a4e636a7b03dfa40954ac707cae6817, type: 3}
