@@ -6,9 +6,7 @@ public class RecipeModel : MonoBehaviour
     [SerializeField] private Vector3 newScale = new Vector3(2, 2, 2);
 
     [SerializeField] private TextMeshProUGUI textToContinue;
-
-    [SerializeField] private Recipe[] listOfRecipe;
-
+    
     [SerializeField] private Camera cam;
 
     [SerializeField] private RecipeController _recipeController;
@@ -16,16 +14,12 @@ public class RecipeModel : MonoBehaviour
     [SerializeField] private Recipe hitObject;
 
     private RaycastHit2D hit2D;
-
-    private Vector3 originalScale = new Vector3(1, 1, 1);
-
+    
     private float timeToLerp;
-
-    private bool canHighlight = false;
-
+    
     private void Start()
     {
-        //InputReader._instance.onZoomEvent.AddListener(OnClick);
+        InputReader._instance.onZoomEvent.AddListener(OnClick);
     }
 
     private void Update()
@@ -33,15 +27,11 @@ public class RecipeModel : MonoBehaviour
         if (_recipeController.hitRecipeObject != null && _recipeController.hitRecipeObject.canZoom)
         {
             timeToLerp += 0.01f * Time.deltaTime;
-            canHighlight = false;
+            
+            DontHighlightObject();
             MoveAndZoom();
         }
         else
-        {
-            canHighlight = true;
-        }
-
-        if (canHighlight && _recipeController.hitRecipeObject != null)
         {
             HighlightObject();
         }
@@ -53,6 +43,8 @@ public class RecipeModel : MonoBehaviour
 
         Vector3 centerPosition = cam.ScreenToWorldPoint(screenCenter);
 
+        if (textToContinue != null) textToContinue.gameObject.SetActive(true);
+
         _recipeController.hitRecipeObject.gameObject.transform.position = new Vector2(
             Mathf.Lerp(_recipeController.hitRecipeObject.gameObject.transform.position.x, centerPosition.x, timeToLerp),
             Mathf.Lerp(_recipeController.hitRecipeObject.gameObject.transform.position.y, centerPosition.y,
@@ -63,8 +55,6 @@ public class RecipeModel : MonoBehaviour
                 timeToLerp),
             Mathf.Lerp(_recipeController.hitRecipeObject.gameObject.transform.localScale.y, newScale.y,
                 timeToLerp));
-
-        if (textToContinue != null) textToContinue.gameObject.SetActive(true);
     }
 
     private void HighlightObject()
@@ -72,36 +62,40 @@ public class RecipeModel : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
         hit2D = Physics2D.Raycast(ray.origin, ray.direction);
-
-     
-        if (hitObject == null) return;
         
-        if (hit2D.collider != null && !hitObject.canZoom)
+        if (hit2D.collider != null)
         {
             hitObject = hit2D.collider.gameObject.GetComponent<Recipe>();
-            hitObject.paperColor = hitObject.spriteRendererRecipe.color;
-            hitObject.paperColor.a = 0.5f;
-            hitObject.textColor.a = 0.5f;
-            hitObject.textOfRecipe.color = hitObject.textColor;
-            hitObject.spriteRendererRecipe.color = hitObject.paperColor;
+            if (hitObject != null)
+            {
+                hitObject.paperColor = hitObject.spriteRendererRecipe.color; 
+                hitObject.paperColor.a = 0.5f; 
+                hitObject.textColor.a = 0.5f; 
+                hitObject.textOfRecipe.color = hitObject.textColor; 
+                hitObject.spriteRendererRecipe.color = hitObject.paperColor;
+            }
         }
         else
         {
-            hitObject.paperColor.a = 1f;
-            hitObject.textColor.a = 1f;
-            hitObject.textOfRecipe.color = hitObject.textColor;
-            hitObject.spriteRendererRecipe.color = hitObject.paperColor;
+            DontHighlightObject();
+        }
+    }
 
-            hitObject = null;
+    private void DontHighlightObject()
+    {
+        if (hitObject != null)
+        {
+             hitObject.paperColor.a = 1f;
+             hitObject.textColor.a = 1f; 
+             hitObject.textOfRecipe.color = hitObject.textColor;
+             hitObject.spriteRendererRecipe.color = hitObject.paperColor;
+             hitObject = null;
         }
     }
 
     private void OnClick()
     {
-        if (_recipeController.hitRecipeObject.canZoom)
-        {
-            if (textToContinue != null) textToContinue.gameObject.SetActive(false);
-            timeToLerp = 0;
-        }
+        if (textToContinue != null) textToContinue.gameObject.SetActive(false);
+        timeToLerp = 0;
     }
 }

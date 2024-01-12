@@ -1,18 +1,26 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LabScene : MonoBehaviour
 {
-    [SerializeField] private RecipeController _cameraRaycaster;
+    [SerializeField] private RecipeController _recipeController;
 
-    [SerializeField] private GameObject[] listOfGameObject;
+    [SerializeField] private GameObject[] listToDestroy;
     
+    [SerializeField] private GameObject[] listToKeep;
+
     [SerializeField] private GameObject positionOfRecipe;
-    
-    private float timeToLerp;
-    
-    private bool canMove;
 
+    [SerializeField] private SpriteRenderer backgroundSpriteRenderer;
+
+    [SerializeField] private Sprite labBackgroundSprite;
+
+    [SerializeField] private TransitionToLab _transitionToLab;
+    
     private GameObject objectToDontDisable;
+
+    public bool canFade;
 
     private void Start()
     {
@@ -21,51 +29,50 @@ public class LabScene : MonoBehaviour
 
     private void Update()
     {
-      DoMove();
+        if (_transitionToLab.canChangeScene)
+        {
+            DoMove();
+        }
     }
 
     private void DoMove()
     {
-        if (canMove)
-        {
-            timeToLerp += 0.01f * Time.deltaTime;
-            InputReader._instance.onContinueEvent.RemoveListener(NextScene);
+        InputReader._instance.onContinueEvent.RemoveListener(NextScene);
 
-            UpdateLerp(objectToDontDisable.transform,
-                positionOfRecipe.transform, objectToDontDisable.transform, positionOfRecipe.transform);
-            
-            if (objectToDontDisable.transform.position == positionOfRecipe.transform.position)
-            {
-                canMove = false;
-                
-                objectToDontDisable.AddComponent<Recipe>();
-            }
-        }
-    }
-    private void UpdateLerp(Transform oldPosition, Transform newPosition, Transform oldScale, Transform newScale)
-    {
-        oldPosition.position = new Vector2(
-            Mathf.Lerp(oldPosition.position.x, newPosition.position.x, timeToLerp),
-            Mathf.Lerp(oldPosition.position.y, newPosition.position.y, timeToLerp));
+        objectToDontDisable.transform.position = positionOfRecipe.transform.position;
+
+        objectToDontDisable.transform.localScale = positionOfRecipe.transform.localScale;
+
+        backgroundSpriteRenderer.sprite = labBackgroundSprite;
         
-        oldScale.localScale = new Vector2(Mathf.Lerp( oldScale.localScale.x, newScale.localScale.x, timeToLerp),
-            Mathf.Lerp( oldScale.localScale.y, newScale.localScale.y, timeToLerp));
+        if (objectToDontDisable.transform.position == positionOfRecipe.transform.position)
+        {
+            objectToDontDisable.AddComponent<Recipe>();
+
+            _transitionToLab.canChangeScene = false;
+        }
     }
 
     public void NextScene()
     {
-        if (_cameraRaycaster.hitRecipeObject != null)
-        { 
-            objectToDontDisable = _cameraRaycaster.hitRecipeObject.gameObject;
+        if (_recipeController.hitRecipeObject != null)
+        {
+            canFade = true;
             
-            foreach (var gameObject in listOfGameObject)
+            objectToDontDisable = _recipeController.hitRecipeObject.gameObject;
+
+            foreach (var gameObject in listToDestroy)
+            {
+                Destroy(gameObject);
+            }
+
+            foreach (var gameObject in listToKeep)
             {
                 gameObject.SetActive(false);
                 objectToDontDisable.SetActive(true);
                 Destroy(objectToDontDisable.GetComponent<Recipe>());
-                
-                _cameraRaycaster.hitRecipeObject = null;
-                canMove = true;
+
+                _recipeController.hitRecipeObject = null;
             }
         }
     }
