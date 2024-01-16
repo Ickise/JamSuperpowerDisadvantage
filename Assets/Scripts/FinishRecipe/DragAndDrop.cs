@@ -4,22 +4,22 @@ using UnityEngine.InputSystem;
 
 public class DragAndDrop : MonoBehaviour
 {
-    [SerializeField] private float mouseDragSpeed = 0.1f;
-
-    [SerializeField] private Ingredients hitIngredient;
     [SerializeField] private Ingredients hitIngredientToHighlight;
 
-
+    [SerializeField] private float mouseDragSpeed = 0.1f;
+    
     private Vector3 velocity = Vector3.zero;
 
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+    
+    public Ingredients hitIngredient;
 
     private void Start()
     {
         InputReader._instance.onDragEvent.AddListener(MousePressed);
         InputReader._instance.onDropEvent.AddListener(MouseReleased);
     }
-    
+
     private void MousePressed()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

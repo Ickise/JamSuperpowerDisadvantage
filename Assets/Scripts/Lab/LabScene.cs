@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class LabScene : MonoBehaviour
 {
@@ -19,8 +17,10 @@ public class LabScene : MonoBehaviour
     [SerializeField] private Sprite labBackgroundSprite;
 
     [SerializeField] private TransitionToLab _transitionToLab;
+
+    public Recipe choosenRecipe;
     
-    private GameObject objectToDontDisable;
+    public GameObject objectToDontDisable;
 
     public bool canFade;
 
@@ -69,6 +69,8 @@ public class LabScene : MonoBehaviour
             
             objectToDontDisable = _recipeController.hitRecipeObject.gameObject;
 
+            choosenRecipe = _recipeController.hitRecipeObject;
+            
             foreach (var gameObject in listToDestroy)
             {
                 Destroy(gameObject);

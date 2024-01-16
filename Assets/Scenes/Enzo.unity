@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 66160527}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1061645864}
+        m_TargetAssemblyTypeName: AddRecipe, Assembly-CSharp
+        m_MethodName: IngredientToRecipe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &66160527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,6 +539,7 @@ MonoBehaviour:
   textColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canZoom: 0
+  recipeID: 0
 --- !u!1 &162284545
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e67f8b54645e948874b0013cefb8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 240669500}
   _view: {fileID: 240669498}
   listOfCustomer:
   - {fileID: 11400000, guid: e10a87652a3a5ad44b4ce32066305b54, type: 2}
@@ -690,6 +702,7 @@ MonoBehaviour:
   listOfChoosenRecipe: []
   choosenDialogue: {fileID: 0}
   choosenCustomer: {fileID: 0}
+  recipeToChoose: {fileID: 0}
   choosenRecipe: {fileID: 0}
 --- !u!114 &240669500
 MonoBehaviour:
@@ -868,6 +881,7 @@ MonoBehaviour:
   paperColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canDrag: 0
+  _ingredientData: {fileID: 11400000, guid: b48d4c94f7d8b434bae962c6c409935e, type: 2}
 --- !u!1 &247445275
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +962,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.67625, y: 2.7}
+  m_Size: {x: 2.1325, y: 2.19875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -991,7 +1005,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.1325, y: 2.19875}
-    newSize: {x: 1.67625, y: 2.7}
+    newSize: {x: 2.1325, y: 2.19875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1015,6 +1029,139 @@ MonoBehaviour:
   paperColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canDrag: 0
+  _ingredientData: {fileID: 11400000, guid: 4f14be6e060fa894dbbec5874b766351, type: 2}
+--- !u!1 &285708469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 285708470}
+  - component: {fileID: 285708473}
+  - component: {fileID: 285708472}
+  - component: {fileID: 285708471}
+  m_Layer: 5
+  m_Name: ResetPotion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &285708470
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285708469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1021478344}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -739, y: 281}
+  m_SizeDelta: {x: 328.37207, y: 272.09302}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &285708471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285708469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.6862745}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 285708472}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1061645864}
+        m_TargetAssemblyTypeName: AddRecipe, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &285708472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285708469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fc677549e219a634b87f016ed9a6e947, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &285708473
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285708469}
+  m_CullTransparentMesh: 1
 --- !u!1 &389937011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,6 +1309,7 @@ MonoBehaviour:
   paperColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canDrag: 0
+  _ingredientData: {fileID: 11400000, guid: a16061a21c92c6b44bee55a74d8b4124, type: 2}
 --- !u!1 &453583635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,6 +1896,7 @@ MonoBehaviour:
   paperColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canDrag: 0
+  _ingredientData: {fileID: 11400000, guid: d8d77d40a488a344e8e1f62490bd6b7b, type: 2}
 --- !u!1 &759809508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +2047,7 @@ MonoBehaviour:
   textColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 5, y: 0, z: 0}
   canZoom: 0
+  recipeID: 2
 --- !u!1 &832045160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,6 +2530,7 @@ MonoBehaviour:
   paperColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canDrag: 0
+  _ingredientData: {fileID: 11400000, guid: a08e1724b531ab2459c842dfd17a7c1e, type: 2}
 --- !u!1 &1021478340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2629,7 @@ RectTransform:
   - {fileID: 137321449}
   - {fileID: 2014129393}
   - {fileID: 66160525}
+  - {fileID: 285708470}
   - {fileID: 1254142628}
   m_Father: {fileID: 1912273352}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2601,7 +2753,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2629,6 +2781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaf79ddc81c1fd44a5526b701e2b4da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _model: {fileID: 240669499}
+  listOfPlayerIngredients: []
 --- !u!1 &1158280171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,9 +2971,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0468b6c892a6f6d43890d78a6128ea39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitIngredientToHighlight: {fileID: 0}
   mouseDragSpeed: 0.1
   hitIngredient: {fileID: 0}
-  hitIngredientToHighlight: {fileID: 0}
 --- !u!1 &1189191325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +3124,7 @@ MonoBehaviour:
   textColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canZoom: 0
+  recipeID: 1
 --- !u!1 &1208500667
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,7 +3530,6 @@ MonoBehaviour:
   - {fileID: 137321446}
   - {fileID: 948090386}
   - {fileID: 2014129392}
-  - {fileID: 240669497}
   listToKeep:
   - {fileID: 158832945}
   - {fileID: 1189191325}
@@ -3383,10 +3537,13 @@ MonoBehaviour:
   listToEnable:
   - {fileID: 1713530864}
   - {fileID: 66160524}
+  - {fileID: 285708469}
   positionOfRecipe: {fileID: 873741999}
   backgroundSpriteRenderer: {fileID: 1301337164}
   labBackgroundSprite: {fileID: 21300000, guid: 95449c76f950074439669e13d4774922, type: 3}
   _transitionToLab: {fileID: 1254142632}
+  choosenRecipe: {fileID: 0}
+  objectToDontDisable: {fileID: 0}
   canFade: 0
 --- !u!4 &1329979899
 Transform:
@@ -3649,6 +3806,7 @@ MonoBehaviour:
   paperColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canDrag: 0
+  _ingredientData: {fileID: 11400000, guid: 66e2b441bf9f00c4d8722705ca946fdd, type: 2}
 --- !u!1 &1713530864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4048,6 +4206,7 @@ MonoBehaviour:
   paperColor: {r: 0, g: 0, b: 0, a: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   canDrag: 0
+  _ingredientData: {fileID: 11400000, guid: 9b74ce93471558b40a2929da590ba904, type: 2}
 --- !u!1 &2014129392
 GameObject:
   m_ObjectHideFlags: 0

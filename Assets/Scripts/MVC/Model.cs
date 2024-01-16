@@ -6,7 +6,6 @@ public class Model : MonoBehaviour
 {
     [Header("À set up")]
     
-    [SerializeField] private Controller _controller;
     [SerializeField] private View _view;
     
     [SerializeField] private CustomerData[] listOfCustomer;
@@ -23,7 +22,9 @@ public class Model : MonoBehaviour
     
     public CustomerData choosenCustomer;
 
-    public RecipeData choosenRecipe;
+    public RecipeData recipeToChoose;
+
+    public Recipe choosenRecipe;
     
     private void Awake()
     {
@@ -44,11 +45,11 @@ public class Model : MonoBehaviour
 
     public void ChooseRecipe()
     {
-        choosenRecipe = choosenDialogue.goodRecipe;
+        recipeToChoose = choosenDialogue.goodRecipe;
         
         listOfChoosenRecipe.Clear();
         
-        listOfChoosenRecipe.Add(choosenRecipe);
+        listOfChoosenRecipe.Add(recipeToChoose);
         
         for (int i = 0; i < 2; i++)
         {
@@ -58,7 +59,7 @@ public class Model : MonoBehaviour
             {
                 RecipeData randomRecipe = listOfRecipe[Random.Range(0, listOfRecipe.Length)];
                 
-                if (randomRecipe != choosenRecipe && listOfChoosenRecipe.Contains(randomRecipe) == false)
+                if (randomRecipe != recipeToChoose && listOfChoosenRecipe.Contains(randomRecipe) == false)
                 {
                     recipe = randomRecipe;
                 }
@@ -67,7 +68,7 @@ public class Model : MonoBehaviour
             Shuffle(listOfChoosenRecipe);
         }
     }
-    
+
     public static void Shuffle<T>(IList<T> list)
     {
         int n = list.Count;

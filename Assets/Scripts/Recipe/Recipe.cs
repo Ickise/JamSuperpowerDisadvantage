@@ -14,6 +14,8 @@ public class Recipe : MonoBehaviour
     public Vector3 originalPosition;
     
     public bool canZoom;
+
+    public int recipeID; 
     
     private void Awake()
     {

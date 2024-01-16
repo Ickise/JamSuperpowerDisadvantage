@@ -6,4 +6,5 @@ public class IngredientData : ScriptableObject
     public string nameOfIngredient;
     
     public Sprite ingredientRepresentation;
+    
 }

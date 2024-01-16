@@ -9,6 +9,8 @@ public class Ingredients : MonoBehaviour
     public Vector3 originalPosition;
 
     public bool canDrag;
+
+    public IngredientData _ingredientData; 
     
     private void Awake()
     {
