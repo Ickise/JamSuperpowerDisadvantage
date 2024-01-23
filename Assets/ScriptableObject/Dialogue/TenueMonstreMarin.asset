@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a545f63d55856447ad98d16857d4c59, type: 3}
-  m_Name: Dialogue2
+  m_Name: TenueMonstreMarin
   m_EditorClassIdentifier: 
-  dialogueLines: "Yo j'aime les v\xEAtements futuristes\nDialogue 2"
-  goodRecipe: {fileID: 11400000, guid: 5781957caf5a1d546af8a741f0c2df7c, type: 2}
+  dialogueLines: "Bien le bonjour ! \nJ'aimerai une tenue aquatique et ressemblant
+    \xE0 un poisson des abysses. J'aime bien la lumi\xE8re qui orne leur cr\xE2ne."
+  goodRecipe: {fileID: 11400000, guid: eceaffc1bd3ed34439114a993e013af9, type: 2}

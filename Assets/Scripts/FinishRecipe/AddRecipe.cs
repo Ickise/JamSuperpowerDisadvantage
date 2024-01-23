@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AddRecipe : MonoBehaviour
@@ -14,6 +13,8 @@ public class AddRecipe : MonoBehaviour
 
     private RaycastHit2D hit2D;
 
+    public bool isGoodRecipe;
+
     private void Update()
     {
         RaycastToDetectIngredient();
@@ -21,20 +22,18 @@ public class AddRecipe : MonoBehaviour
 
     public void IngredientToRecipe()
     {
-        // trouver la bonne liste d'ingrédient celle que le joueur doit faire
         listOfGoodIngredients = _model.recipeToChoose.listOfGoodIngredient;
 
-        bool isGoodRecipe = IsGoodRecipe(listOfGoodIngredients, listOfPlayerIngredients.ToArray());
+        isGoodRecipe = IsGoodRecipe(listOfGoodIngredients, listOfPlayerIngredients.ToArray());
 
-        // trouver la liste d'ingrédient que le joueur a fait
         if (isGoodRecipe)
         {
-            Debug.Log("gg");
+            //faire la transition avec le atchoum
         }
 
         if (!isGoodRecipe)
         {
-            Debug.Log("loose");
+            // faire la transition avec le atchoum
         }
     }
 

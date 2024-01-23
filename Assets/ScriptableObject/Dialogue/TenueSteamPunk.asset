@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a545f63d55856447ad98d16857d4c59, type: 3}
-  m_Name: TenueGrenouille
+  m_Name: TenueSteamPunk
   m_EditorClassIdentifier: 
-  dialogueLines: "Bien le bonjour ! \nJe suis bien chez le c\xE9l\xE9bre styliste
-    Atchoum ? Parfait ! J'aimerai une tenue me faisant bondir, lancer ma langue tr\xE8s
-    loin, nager dans l'eau... une tenue Grenouille serait parfait. "
-  goodRecipe: {fileID: 11400000, guid: eceaffc1bd3ed34439114a993e013af9, type: 2}
+  dialogueLines: "Yo ! \nJe veux une tenue au style m\xE9canique. Des lunettes de
+    m\xE9canicien feront l'affaire !"
+  goodRecipe: {fileID: 11400000, guid: 7250d0d3fb58fa84293cd0804bb29bcd, type: 2}

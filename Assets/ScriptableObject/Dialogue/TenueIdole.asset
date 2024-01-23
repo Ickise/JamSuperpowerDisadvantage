@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a545f63d55856447ad98d16857d4c59, type: 3}
+  m_Name: TenueIdole
+  m_EditorClassIdentifier: 
+  dialogueLines: "Hi ! \nJe souhaite devenir une star de K-pop. J'aimerai des strasses
+    et des pailettes, des lunettes de soleil teint\xE9es noires et une tenue digne
+    de ce nom."
+  goodRecipe: {fileID: 11400000, guid: a4f791e7a51334943955a179179381f3, type: 2}

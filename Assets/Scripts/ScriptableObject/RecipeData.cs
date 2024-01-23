@@ -9,4 +9,6 @@ public class RecipeData : ScriptableObject
     public string recipeInstructions;
     
     public IngredientData[] listOfGoodIngredient;
+    
+    public Sprite[] finalOutfit;
 }

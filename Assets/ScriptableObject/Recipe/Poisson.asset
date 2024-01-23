@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7eb3148b4427a4288a3bc8cf5644a3, type: 3}
+  m_Name: Poisson
+  m_EditorClassIdentifier: 
+  nameOfRecipe: Poisson
+  recipeInstructions: "Pour confectionner une tenue Poisson-lanterne, il vous faut
+    mettre dans votre flacon de parfum : \n\n- De la menthe fra\xEEche\n- Des gla\xE7ons\n-
+    Du sirop de fruit"
+  listOfGoodIngredient:
+  - {fileID: 11400000, guid: 66e2b441bf9f00c4d8722705ca946fdd, type: 2}
+  - {fileID: 11400000, guid: d8d77d40a488a344e8e1f62490bd6b7b, type: 2}
+  - {fileID: 11400000, guid: a16061a21c92c6b44bee55a74d8b4124, type: 2}
+  finalOutfit:
+  - {fileID: 21300000, guid: 9ab63cf67afc2c14bb1ddef5bcbcc77e, type: 3}
+  - {fileID: 21300000, guid: 3144f1c856d969645b040746436c1b71, type: 3}
+  - {fileID: 21300000, guid: b8ccc451d7a54c042a0d9e11d97035ac, type: 3}
+  - {fileID: 21300000, guid: dc23b7e0fc3c9b84e9b80ecb0c6af6c2, type: 3}
